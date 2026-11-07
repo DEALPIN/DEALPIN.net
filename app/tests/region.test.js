@@ -1,0 +1,26 @@
+const vm=require('node:vm'),fs=require('fs'),assert=require('assert');
+function load(lang,stored){const mem=stored?{'dealpin.region':JSON.stringify(stored)}:{};const ctx={navigator:{language:lang},localStorage:{getItem:k=>mem[k]||null,setItem:(k,v)=>mem[k]=v},Intl,Date,JSON,String,Number};vm.createContext(ctx);
+  vm.runInContext(fs.readFileSync(__dirname+'/../js/region.js','utf8')+';globalThis.api={money,when,tel,setRegion,roundMoney,minorDigits,REGIONS,currencyOptions,getRegion:()=>REGION};',ctx);return ctx.api}
+let a=load('en-GB');
+assert.equal(a.getRegion().currency,'GBP');assert.equal(a.getRegion().country,'GB');assert.equal(a.tel('07123456789'),'447123456789');
+console.log('ok   defaults follow the browser locale');
+assert(a.REGIONS.length>=190,'worldwide list: '+a.REGIONS.length);
+assert(new Set(a.REGIONS.map(r=>r[0])).size===a.REGIONS.length,'no duplicate countries');
+assert(a.REGIONS.every(r=>/^[A-Z]{2}$/.test(r[0])&&/^\+\d{1,4}$/.test(r[2])&&/^[A-Z]{3}$/.test(r[3])),'every row is well formed');
+for(const c of ['US','GB','UG','KE','NG','ZA','IN','BR','JP','DE','FR','AU','CA','MX','AE','SA','EG','TZ','RW','GH','ET','PK','BD','ID','PH','TR','CN'])assert(a.REGIONS.some(r=>r[0]===c),'missing '+c);
+console.log('ok   the country list covers the world ('+a.REGIONS.length+' countries)');
+a.setRegion('UG','UGX');assert.equal(a.getRegion().dial,'+256');assert.equal(a.tel('0772000000'),'256772000000');assert.equal(a.tel('+256772000000'),'256772000000');assert.equal(a.tel('256772000000'),'256772000000');assert.equal(a.tel('0256772000000'.slice(1)),'256772000000');
+a.setRegion('US','USD');assert.equal(a.tel('2125551234'),'12125551234');assert.equal(a.tel('+44 7123 456789'),'447123456789');assert.equal(a.tel('0044 7123 456789'),'447123456789');
+console.log('ok   phone numbers are normalised for the selected calling code');
+assert(a.money(12).includes('$')&&a.money(12).includes('12'));assert(a.money(12.5,'EUR').includes('€'));assert(!/\.\d/.test(a.money(1200,'JPY')),'yen has no decimals');assert(/12\.50/.test(a.money(12.5,'USD')));
+console.log('ok   a deal is shown in its own currency, not the device currency');
+assert.equal(a.minorDigits('JPY'),0);assert.equal(a.minorDigits('USD'),2);assert.equal(a.minorDigits('KWD'),3);
+assert.equal(a.roundMoney('12.345','USD'),12.35);assert.equal(a.roundMoney('1200.7','JPY'),1201);assert.equal(a.roundMoney('1.2345','KWD'),1.235);
+console.log('ok   currency decimals follow ISO 4217');
+assert(a.currencyOptions('USD').includes('selected')&&a.currencyOptions('ZZZ').includes('value="ZZZ" selected'));
+assert.equal(a.money(5,'bad<'),a.money(5));
+console.log('ok   currency list and bad currency codes');
+a=load('sw-TZ');assert.equal(a.getRegion().country,'TZ');assert.equal(a.getRegion().currency,'TZS');
+a=load('xx');assert.equal(a.getRegion().country,'US');
+a=load('en-US',{country:'<x>',currency:'USD',dial:'+1',locale:'en-US'});assert.equal(a.getRegion().country,'US');
+console.log('ok   unknown or tampered saved settings fall back safely');
