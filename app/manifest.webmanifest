@@ -1,0 +1,71 @@
+{
+ "name": "Dealpin",
+ "short_name": "Dealpin",
+ "description": "Sell in chat. Prove every deal. Run your business.",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "orientation": "any",
+ "background_color": "#F2F6F3",
+ "theme_color": "#0F3D2E",
+ "icons": [
+  {
+   "src": "icons/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "icons/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icons/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  },
+  {
+   "src": "icons/icon.svg",
+   "sizes": "any",
+   "type": "image/svg+xml"
+  }
+ ],
+ "id": "./",
+ "lang": "en",
+ "categories": [
+  "business",
+  "shopping",
+  "productivity"
+ ],
+ "dir": "auto",
+ "display_override": [
+  "standalone",
+  "minimal-ui"
+ ],
+ "shortcuts": [
+  {
+   "name": "New deal",
+   "short_name": "New deal",
+   "url": "./#/new",
+   "icons": [
+    {
+     "src": "icons/icon-192.png",
+     "sizes": "192x192"
+    }
+   ]
+  },
+  {
+   "name": "Verify a receipt",
+   "short_name": "Verify",
+   "url": "./#/verify",
+   "icons": [
+    {
+     "src": "icons/icon-192.png",
+     "sizes": "192x192"
+    }
+   ]
+  }
+ ]
+}

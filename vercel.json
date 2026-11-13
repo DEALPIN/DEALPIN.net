@@ -1,0 +1,21 @@
+{
+  "cleanUrls": false,
+  "headers": [
+    {"source": "/(site.css|js/(.*))", "headers": [{"key": "Cache-Control", "value": "public, max-age=300, stale-while-revalidate=604800"}]},
+    {"source": "/(.*)", "headers": [
+      {"key": "Content-Security-Policy", "value": "default-src 'none'; script-src 'self' https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://adservice.google.com; style-src 'self'; img-src 'self' data: blob: https://*.supabase.co https://lh3.googleusercontent.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com; media-src 'self' data: blob: https://*.supabase.co; connect-src 'self' https://*.supabase.co https://kvydbbfcjouxlskmhvif.supabase.co https://*.googlesyndication.com https://*.doubleclick.net; manifest-src 'self'; worker-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-ancestors 'none'; frame-src https://*.googlesyndication.com https://*.doubleclick.net"},
+      {"key": "X-Content-Type-Options", "value": "nosniff"},
+      {"key": "X-Frame-Options", "value": "DENY"},
+      {"key": "Referrer-Policy", "value": "no-referrer"},
+      {"key": "Permissions-Policy", "value": "geolocation=(self), microphone=(self), camera=(), payment=(), usb=(), bluetooth=(), interest-cohort=()"},
+      {"key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains"},
+      {"key": "Cross-Origin-Opener-Policy", "value": "same-origin"},
+      {"key": "Cross-Origin-Resource-Policy", "value": "same-origin"}
+    ]},
+    {"source": "/app/js/config.js", "headers": [{"key": "Cache-Control", "value": "no-store"}]},
+    {"source": "/app/sw.js", "headers": [{"key": "Cache-Control", "value": "no-cache"}]},
+    {"source": "/(index.html|app/index.html|app/js/(.*)|app/css/(.*)|app/manifest.webmanifest)", "headers": [{"key": "Cache-Control", "value": "no-cache"}]},
+    {"source": "/app/manifest.webmanifest", "headers": [{"key": "Content-Type", "value": "application/manifest+json"}]},
+    {"source": "/app/icons/(.*)", "headers": [{"key": "Cache-Control", "value": "public, max-age=604800"}]}
+  ]
+}

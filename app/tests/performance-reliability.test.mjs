@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const api=fs.readFileSync(new URL('../js/supabase-store.js',import.meta.url),'utf8');
+const sw=fs.readFileSync(new URL('../sw.js',import.meta.url),'utf8');
+assert.match(api,/const inflight=new Map\(\)/);
+assert.match(api,/AbortController/);
+assert.match(api,/setTimeout\(\(\)=>ac.abort\(\),15000\)/);
+assert.match(api,/method==='GET'\|\|method==='HEAD'/);
+assert.match(api,/res.status>=500/);
+assert.match(sw,/dealpin-v69/);
+console.log('performance/reliability checks passed');

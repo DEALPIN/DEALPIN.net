@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const monitor=fs.readFileSync(new URL('../js/monitor.js',import.meta.url),'utf8');
+const sql=fs.readFileSync(new URL('../supabase/setup/22-observability.sql',import.meta.url),'utf8');
+assert.match(monitor,/client_id/);
+assert.match(monitor,/request_id/);
+assert.match(monitor,/longtask/);
+assert.match(monitor,/offline/);
+assert.match(sql,/crash_reports_guard/);
+assert.match(sql,/20/);
+assert.match(sql,/dealpin_health_check/);
+console.log('Observability regression checks passed');

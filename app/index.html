@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob: https://*.supabase.co https://lh3.googleusercontent.com; media-src 'self' data: blob: https://*.supabase.co; connect-src 'self' https://*.supabase.co https://kvydbbfcjouxlskmhvif.supabase.co; manifest-src 'self'; worker-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Dealpin</title>
+<meta name="description" content="Sell in chat. Prove every deal. Run your business.">
+<meta name="color-scheme" content="light dark">
+<meta name="application-name" content="Dealpin">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Dealpin">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="format-detection" content="telephone=no">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dealpin">
+<meta property="og:description" content="Sell in chat. Prove every deal. Run your business.">
+<meta name="theme-color" content="#F7F8F7">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/app-shell.css">
+</head>
+<body>
+<a class="skip-link" href="#app">Skip to main content</a>
+<svg class="sprite" width="0" height="0" aria-hidden="true">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></symbol>
+  <symbol id="i-cog" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h11v9H2zM13 9h4l4 4v2h-8z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3zM5 17a3 3 0 0 1 3-3h11"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v4h4M9 12h6M9 16h6"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M3 7l9-4 9 4v10l-9 4-9-4zM3 7l9 4 9-4M12 11v10"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-3.5 3-5.5 7-5.5s7 2 7 5.5M16 4.5a3.5 3.5 0 0 1 0 7M18 14.8c2.3.6 4 2.2 4 5.2"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 20a2 2 0 0 0 4 0"/></symbol>
+  <symbol id="i-contrast" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18" /><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></symbol>
+</svg>
+<header class="app-header" id="app-header">
+  <a class="app-brand" href="#/" aria-label="Dealpin home">
+    <span class="app-mark"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg></span>
+    <span>Dealpin</span>
+  </a>
+  <div class="header-actions">
+    <a class="icon-button bell" href="#/inbox" aria-label="Universal inbox" title="Universal inbox"><svg class="ic" aria-hidden="true"><use href="#i-bell"/></svg><span class="bell-count" id="bell-count" hidden></span></a>
+    <button class="icon-button" id="theme-toggle" type="button" aria-label="Change colour theme" title="Change colour theme"><svg class="ic" aria-hidden="true"><use href="#i-contrast"/></svg></button>
+    <a class="profile-button" href="#/profile" aria-label="Open profile" title="Profile"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg></a>
+  </div>
+</header>
+<nav class="bottom-nav" id="main-navigation" aria-label="Main navigation">
+  <a href="#/" data-r="home"><svg class="ic"><use href="#i-home"/></svg><span>Home</span></a>
+  <a href="#/explore" data-r="explore"><svg class="ic"><use href="#i-grid"/></svg><span>Explore</span></a>
+  <button class="nav-create" id="create-menu" type="button" aria-label="Create"><span><svg class="ic"><use href="#i-plus"/></svg></span><small>Create</small></button>
+  <a href="#/deals" data-r="deals"><svg class="ic"><use href="#i-box"/></svg><span>Deals</span></a>
+  <a href="#/products" data-r="products"><svg class="ic"><use href="#i-doc"/></svg><span>Products</span></a>
+</nav>
+<div class="create-scrim" id="create-scrim" hidden>
+  <section class="create-sheet" id="create-dialog" role="dialog" aria-modal="true" aria-labelledby="create-title">
+    <div class="sheet-handle"></div>
+    <div class="sheet-heading"><div><p class="eyebrow">QUICK ACTIONS</p><h2 id="create-title">What would you like to create?</h2></div><button class="icon-button" id="close-create" type="button" aria-label="Close"><svg class="ic"><use href="#i-plus"/></svg></button></div>
+    <a class="create-option" href="#/new"><span class="create-option-icon"><svg class="ic"><use href="#i-users"/></svg></span><span><b>New deal</b><small>Start a documented transaction with a buyer.</small></span><span class="option-arrow">›</span></a>
+    <a class="create-option" href="#/product/new"><span class="create-option-icon"><svg class="ic"><use href="#i-box"/></svg></span><span><b>New product</b><small>Prepare a product listing for your storefront.</small></span><span class="option-arrow">›</span></a>
+  </section>
+</div>
+<main id="app" tabindex="-1"></main>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p class="ns">Dealpin needs JavaScript to run. Turn it on in your browser settings and reload.</p></noscript>
+<script src="js/config.js"></script>
+<script src="js/maintenance.js"></script>
+<script src="js/constants.js"></script>
+<script src="js/monitor.js"></script>
+<script src="js/store.js"></script>
+<script src="js/qr.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/trust.js"></script>
+<script src="js/region.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/supabase-store.js"></script>
+<script src="js/supabase-mods.js"></script>
+<script src="js/input-validation.js"></script>
+<script src="js/api.js"></script>
+<script src="js/autopilot.js"></script>
+<script src="js/core.js"></script>
+<script src="js/push.js"></script>
+<script src="js/seller.js"></script>
+<script src="js/daily-command.js"></script>
+<script src="js/public.js"></script>
+<script src="js/mods-core.js"></script>
+<script src="js/mods-ui.js"></script>
+<script src="js/mods.js"></script>
+<script src="js/router.js"></script>
+<script src="js/app-shell.js"></script>
+</body>
+</html>
