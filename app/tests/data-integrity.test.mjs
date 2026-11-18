@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const sql=fs.readFileSync(new URL('../supabase/setup/20-data-integrity.sql',import.meta.url),'utf8');
+const store=fs.readFileSync(new URL('../js/supabase-store.js',import.meta.url),'utf8');
+const ap=fs.readFileSync(new URL('../js/autopilot.js',import.meta.url),'utf8');
+assert.match(sql,/p_expected_updated_at timestamptz default null/);
+assert.match(sql,/p_expected_updated_at/);
+assert.match(sql,/This record changed while you were editing it/);
+assert.match(store,/p_expected_updated_at:expectedUpdatedAt/);
+assert.match(ap,/old&&old\.updated_at/);
+assert.match(ap,/submitBtn\.disabled=true/);
+console.log('Data integrity regression checks passed');

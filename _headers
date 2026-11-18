@@ -1,0 +1,37 @@
+# Security headers for Netlify and Cloudflare Pages (same file format). Other hosts: set the same headers in their config (vercel.json is included for Vercel).
+# frame-ancestors can only be sent as a header, not in the meta tag, so this file adds protection against clickjacking.
+# If you use your own Supabase domain or set errorEndpoint, add that host to connect-src here AND in index.html (and vercel.json).
+/*
+  Content-Security-Policy: default-src 'none'; script-src 'self' https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://adservice.google.com; style-src 'self'; img-src 'self' data: blob: https://*.supabase.co https://lh3.googleusercontent.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com; media-src 'self' data: blob: https://*.supabase.co; connect-src 'self' https://*.supabase.co https://kvydbbfcjouxlskmhvif.supabase.co https://*.googlesyndication.com https://*.doubleclick.net; manifest-src 'self'; worker-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-ancestors 'none'; frame-src https://*.googlesyndication.com https://*.doubleclick.net
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: no-referrer
+  Permissions-Policy: geolocation=(self), microphone=(self), camera=(), payment=(), usb=(), bluetooth=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+/app/sw.js
+  Cache-Control: no-cache
+/site.css
+  Cache-Control: public, max-age=300, stale-while-revalidate=604800
+/js/*
+  Cache-Control: public, max-age=300, stale-while-revalidate=604800
+/index.html
+  Cache-Control: no-cache
+/app/js/*
+  Cache-Control: public, max-age=300, stale-while-revalidate=604800
+/app/css/*
+  Cache-Control: no-cache
+/app/manifest.webmanifest
+  Content-Type: application/manifest+json
+  Cache-Control: no-cache
+/app/icons/*
+  Cache-Control: public, max-age=604800
+
+/admin/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store
+
+/app/js/config.js
+  Cache-Control: no-store
+
